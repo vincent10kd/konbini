@@ -15,6 +15,6 @@
 #'
 
 rename_columns <- function(dat, column, to){
-  colnames(dat)[which(colnames(dat)%in%column)] <- to
+  colnames(dat)[sapply(column, function(x) which(colnames(dat) == x))] <- to
   dat
 }
