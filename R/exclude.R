@@ -14,10 +14,7 @@
 
 exclude <- function(dat, condition, verbose = TRUE){
   condition <- deparse(substitute(condition))
-  dat2 <- as.data.frame(cbind(r_id = 1:nrow(dat), dat))
-  sub <- eval(str2lang(paste0('subset(dat2,', condition,')')))
-  dat2 <- subset(dat2, !r_id %in% sub$r_id)
-  dat2$r_id <- NULL
+  dat2 <- eval(str2lang(paste0('subset(dat, !(', condition,'))')))
   if(verbose) cat(nrow(dat)-nrow(dat2),'rows were excluded based on the exclusion criteria.\n')
   dat2
 }
