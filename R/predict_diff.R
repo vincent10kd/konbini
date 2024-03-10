@@ -31,7 +31,6 @@
 #'
 #' @export
 #'
-
 predict_diff <- function(mod, x1, x2, type = NULL, ratio = FALSE,
                          ci = FALSE, data = NULL, boot.iter = 1e3,
                          decimals = 3, plot = TRUE, seed = NULL){
