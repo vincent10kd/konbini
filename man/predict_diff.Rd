@@ -29,7 +29,7 @@ predict_diff(
 
 \item{ratio}{If TRUE, returns the ratio of predictions instead of the difference.}
 
-\item{ci}{If TRUE, returns a bootstrapped confidence interval (95%).}
+\item{ci}{If TRUE, returns a bootstrapped confidence interval (95 percent).}
 
 \item{data}{If ci is TRUE, the data based on which the bootstrap samples are to be made (same as the data that informed the model) should be provided.}
 

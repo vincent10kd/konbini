@@ -7,7 +7,7 @@
 #' @param x2 One row in X to compare against another row in X
 #' @param type The type of prediction. By default the difference is on the scale of the linear predictor.
 #' @param ratio If TRUE, returns the ratio of predictions instead of the difference.
-#' @param ci If TRUE, returns a bootstrapped confidence interval (95%).
+#' @param ci If TRUE, returns a bootstrapped confidence interval (95 percent).
 #' @param data If ci is TRUE, the data based on which the bootstrap samples are to be made (same as the data that informed the model) should be provided.
 #' @param boot.iter Number of bootstrap samples.
 #' @param decimals Number of decimals to display for the difference and its confidence interval.
