@@ -1,10 +1,10 @@
-#' @title Predict difference in outcome for a pair of linear predictors
+#' @title Predict (mean) difference in conditional outcome for pairs of linear predictors
 #'
-#' @description Gives the difference in predicted y for two rows in X (X = x1 vs X = x2), based on a given regression model. Returns a confidence interval for the difference based on bootstrap samples. A ratio of predictions can also be returned.
+#' @description Gives the difference in predicted y for two rows in X (X = x1 vs X = x2) or two datasets X1 and X2, based on a given regression model. Returns a confidence interval for the difference based on bootstrap samples. A ratio of predictions can also be returned.
 #'
 #' @param mod The regression model based on which to generate the predictions.
-#' @param x1 One row in X to compare against another row in X.
-#' @param x2 One row in X to compare against another row in X
+#' @param x1 One row in X to compare against another row in X, or one dataset. (matrix or data.frame)
+#' @param x2 One row in X to compare against another row in X, or one dataset. (matrix or data.frame)
 #' @param type The type of prediction. By default the difference is on the scale of the linear predictor.
 #' @param ratio If TRUE, returns the ratio of predictions instead of the difference.
 #' @param ci If TRUE, returns a bootstrapped confidence interval (95 percent).
@@ -37,8 +37,8 @@ predict_diff <- function(mod, x1, x2, type = NULL, ratio = FALSE,
 
   pred1 <- predict(mod, newdata = x1, type = type)
   pred2 <- predict(mod, newdata = x2, type = type)
-  diff <- pred1 - pred2
-  if(ratio) diff <- pred1 / pred2
+  diff <- mean(pred1 - pred2)
+  if(ratio) diff <- mean(pred1 / pred2)
 
   if(ci){
     if(is.null(data)){
@@ -50,8 +50,8 @@ predict_diff <- function(mod, x1, x2, type = NULL, ratio = FALSE,
       nmod <- update(mod, data = x)
       pred1 <- predict(nmod, newdata = x1)
       pred2 <- predict(nmod, newdata = x2)
-      diff <- pred1 - pred2
-      if(ratio) diff <- pred1 / pred2
+      diff <- mean(pred1 - pred2)
+      if(ratio) diff <- mean(pred1 / pred2)
       diff
     })
     bres <- do.call('c', bres)
