@@ -2,7 +2,7 @@
 % Please edit documentation in R/predict_diff.R
 \name{predict_diff}
 \alias{predict_diff}
-\title{Predict difference in outcome for a pair of linear predictors}
+\title{Predict (mean) difference in conditional outcome for pairs of linear predictors}
 \usage{
 predict_diff(
   mod,
@@ -21,9 +21,9 @@ predict_diff(
 \arguments{
 \item{mod}{The regression model based on which to generate the predictions.}
 
-\item{x1}{One row in X to compare against another row in X.}
+\item{x1}{One row in X to compare against another row in X, or one dataset. (matrix or data.frame)}
 
-\item{x2}{One row in X to compare against another row in X}
+\item{x2}{One row in X to compare against another row in X, or one dataset. (matrix or data.frame)}
 
 \item{type}{The type of prediction. By default the difference is on the scale of the linear predictor.}
 
@@ -42,7 +42,7 @@ predict_diff(
 \item{seed}{If not NULL, sets a random seed before bootstrapping.}
 }
 \description{
-Gives the difference in predicted y for two rows in X (X = x1 vs X = x2), based on a given regression model. Returns a confidence interval for the difference based on bootstrap samples. A ratio of predictions can also be returned.
+Gives the difference in predicted y for two rows in X (X = x1 vs X = x2) or two datasets X1 and X2, based on a given regression model. Returns a confidence interval for the difference based on bootstrap samples. A ratio of predictions can also be returned.
 }
 \examples{
 predict_diff(lm(Sepal.Length ~., iris), x1 = iris[1,-1], x2 = iris[4,-1], ci = TRUE, data = iris)
