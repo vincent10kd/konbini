@@ -16,5 +16,5 @@ Returns the skewness of the input vector.
 Calculates the skewness of a continuous variable
 }
 \examples{
-skewness(iris$Sepal.Length)
+skew(iris$Sepal.Length)
 }

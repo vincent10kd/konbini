@@ -6,7 +6,7 @@
 #'
 #' @return Returns the skewness of the input vector.
 #' @examples
-#' skewness(iris$Sepal.Length)
+#' skew(iris$Sepal.Length)
 #' @export
 #'
 
