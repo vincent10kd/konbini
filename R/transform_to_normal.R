@@ -28,7 +28,7 @@ transform_to_normal <- function(x, constant = 1, rank=FALSE){
     return(invnorm)
   }
   transformations <- data.frame(identity, ln, sqrt, inverse)
-  trans_ind <- which.min(abs(sapply(transformations, konbini::skew)))
+  trans_ind <- which.min(abs(sapply(transformations, function(x) konbini::skew(na.omit(x)))))
   print(colnames(transformations)[trans_ind])
   transformations[, trans_ind]
 }
