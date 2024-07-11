@@ -17,10 +17,8 @@ truncate_time <- function(dat, event, time, max_follow_up=1, add=FALSE, add.name
   e <- dat[,event]
   t <- dat[,time]
   m <- max_follow_up
-  ind <- which(t[e==1]>m)
-  ind2 <- which(t>m)
-  e[e==1][ind] <- 0
-  t[ind2] <- m
+  e[which(t>m)] <- 0
+  t[which(t>m)] <- m
   res <- data.frame(trunc_event=e,trunc_time=t)
   if(add==FALSE) return(res)
   if(add==TRUE){
