@@ -37,8 +37,8 @@ predict_diff <- function(mod, x1, x2, type = NULL, ratio = FALSE,
 
   pred1 <- predict(mod, newdata = x1, type = type)
   pred2 <- predict(mod, newdata = x2, type = type)
-  diff <- mean(pred1 - pred2)
-  if(ratio) diff <- mean(pred1 / pred2)
+  diff <- mean(pred1 - pred2, na.rm = TRUE)
+  if(ratio) diff <- mean(pred1 / pred2, na.rm = TRUE)
 
   if(ci){
     if(is.null(data)){
@@ -50,8 +50,8 @@ predict_diff <- function(mod, x1, x2, type = NULL, ratio = FALSE,
       nmod <- update(mod, data = x)
       pred1 <- predict(nmod, newdata = x1)
       pred2 <- predict(nmod, newdata = x2)
-      diff <- mean(pred1 - pred2)
-      if(ratio) diff <- mean(pred1 / pred2)
+      diff <- mean(pred1 - pred2, na.rm = TRUE)
+      if(ratio) diff <- mean(pred1 / pred2, na.rm = TRUE)
       diff
     })
     bres <- do.call('c', bres)
