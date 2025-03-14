@@ -17,9 +17,6 @@ combine_endpoints(dat, events, times, add = FALSE, add.names = NULL)
 
 \item{add.names}{A character vector with the colnames for the columns added if add=TRUE.}
 }
-\value{
-
-}
 \description{
 Combines two events with times for time-to-event data.
 }

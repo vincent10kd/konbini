@@ -26,9 +26,6 @@ truncate_time(
 
 \item{add.names}{A character vector with the colnames for the columns added if add=TRUE.}
 }
-\value{
-
-}
 \description{
 Truncates survival times and recodes the corresponding event.
 }
